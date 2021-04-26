@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Home() {
+export default function Shelves() {
   return (
-      <div className="flex flex-grow justify-center">
+      <div className="flex flex-grow justify-center bg-black p-4">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>Shelves</title>
@@ -14,7 +14,7 @@ export default function Home() {
         <img src="shelves/main.png"></img>
       </div>
       <div className="bg-grey">
-          <div className="text-white text-base p-4 font-bold">Please answer the following questions about the solution above.</div>
+          <div className="text-white text-base p-4 font-bold bg-black text-center">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div>
           <div className="grid grid-cols-12">
               <div className="col-span-10 p-4 text-white">
                  Do you understand the overall approach?
@@ -22,13 +22,9 @@ export default function Home() {
               <div className="col-span-2 p-4 text-white text-bold">
                     YES / NO
               </div>
-              <div className="col-span-10 p-4">
+              <div className="col-span-12 p-4">
                  <div className="text-white">How secure do you judge the approach to be?</div>
-                 <div className="text-white opacity-50 text-sm">assuming you don't necessarily trust everyone in your home</div>
-              </div>
-
-              <div className="col-span-2 p-4 text-white text-bold">
-                    YES / NO
+                 <div className="text-white opacity-50 text-xs">assuming you don't necessarily trust everyone in your home</div>
               </div>
             </div>
             <div className="color white w-full pl-6 pr-6">
@@ -36,55 +32,92 @@ export default function Home() {
                     <div className="grid grid-cols-12 mb-4">
                         <div className="col-span-4">
                                <div className="text-lg text-white">Insecure</div> 
-                               <div className="text-sm text-white opacity-50">This would not offer any extra security in my home</div> 
+                               <div className="text-xs pr-6 text-orange ">This would not offer any extra security in my home</div> 
                         </div>
                         <div className="col-span-4">
                                <div className="text-lg text-white">Mostly Secure</div> 
-                               <div className="text-sm text-white opacity-50">This would add more security though I see how it could be broken</div> 
+                               <div className="text-xs pr-6 text-orange">This would add more security though I see how it could be broken</div> 
                         </div>
                         <div className="col-span-4">
                                <div className="text-lg text-white">Secure</div> 
-                               <div className="text-sm text-white opacity-50">This is a secure solution that would be difficult to break</div> 
+                               <div className="text-xs pr-6 text-orange">This is a secure solution that would be difficult to break</div> 
                         </div>
                     </div>
-                    <div className="text-white text-sm mb-4">
+                    <div className="text-white text-sm mt-6 mb-1">
                         In what way(s) could you imagine security being compromised?
                     </div>
-                    <textarea class="resize border rounded-md w-full"></textarea>
+                    <textarea className="resize border rounded-md w-full"></textarea>
                     </div>
 
               </div>
+
+
+
+              <div className="col-span-10 p-4">
+                 <div className="text-white">How easy do you think it would be to remember different configurations?</div>
+                 <div className="text-white opacity-50 text-xs">i.e. remember different book placements for a range of authorised tasks</div>
+              </div>
+              <div className="color white w-full pl-6 pr-6">
+                    <div className="bg-lightgray p-4">
+                    <div className="grid grid-cols-7">
+                        <div className="col-span-1">
+                               <div className="text-xs font-bold text-orange pr-4">Very difficult</div> 
+                        </div>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                        </div>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                        </div>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                        </div>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                        </div>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                        </div>
+                        <div className="col-span-1">
+                               <div className="text-xs font-bold text-orange">Very Easy</div> 
+                        </div>
+                      </div>
+                      </div>
+                </div>
+
+
+
               <div className="col-span-10 p-4">
                  <div className="text-white">How would you rate this system?</div>
-                 <div className="text-white opacity-50 text-sm">please consider how easy it would be to use as well as security</div>
+                 <div className="text-white opacity-50 text-xs">please consider how easy it would be to use as well as security</div>
               </div>
               <div className="color white w-full pl-6 pr-6">
                     <div className="bg-lightgray p-4">
                     <div className="grid grid-cols-7 mb-4">
                         <div className="col-span-1">
-                               <div className="text-lg text-white">Hate it</div> 
+                               <div className="text-xs text-orange font-bold">I hate it</div> 
                         </div>
-                        <div className="col-span-1">
-                            <input type="radio" class="form-radio" name="rating" value="0"/>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
-                        <div className="col-span-1">
-                            <input type="radio" class="form-radio" name="rating" value="0"/>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
-                        <div className="col-span-1">
-                            <input type="radio" class="form-radio" name="rating" value="0"/>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
-                        <div className="col-span-1">
-                            <input type="radio" class="form-radio" name="rating" value="0"/>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
-                        <div className="col-span-1">
-                            <input type="radio" class="form-radio" name="rating" value="0"/>
+                        <div className="col-span-1 text-center">
+                            <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
-                        <div className="col-span-1">
-                               <div className="text-lg text-white">Love it</div> 
+                        <div className="col-span-1 ">
+                            <div className="text-xs text-orange font-bold">I love it</div> 
                         </div>
                     </div>
                         <div className="text-white mb-4 text-sm">Why did you provide this rating?</div>
-                        <textarea class="resize border rounded-md w-full"></textarea>
+                        <textarea className="resize border rounded-md w-full"></textarea>
                     </div>
 
                 </div>
@@ -96,20 +129,20 @@ export default function Home() {
                     <div className="col-span-2 p-4 text-white text-bold">
                         YES / NO
                     </div>
-                    <div className="col-span-12 pl-4 text-white text-sm">
+                    <div className="col-span-12 pl-4 mb-1 text-white text-sm">
                         Why did you give this answer?
                     </div>
-                    <div className="col-span-12 p-6 text-white text-bold">
+                    <div className="col-span-12 pl-4 text-white text-bold">
                         <textarea className="resize border rounded-md w-full"></textarea>
                     </div>
                 </div>   
 
                 <div className="p-4">
-                    <div className="text-white">
+                    <div className="text-white mb-2">
                         Please provide any thoughts or feedback on this solution
                     </div>
-                    <div className="p-2">
-                        <textarea class="resize border rounded-md w-full"></textarea>
+                    <div className="">
+                        <textarea className="resize border rounded-md w-full"></textarea>
                     </div>
                 </div>   
             </div>

@@ -1,17 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Shelves() {
+export default function Map() {
   return (
       <div className="flex flex-grow justify-center bg-black p-4">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
-        <title>Shelves</title>
+        <title>Map</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC shelves</div>
+    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC world map</div>
       <div className="bg-gray w-full p-0 m-0">
-        <img src="shelves/main.png"></img>
+        <img src="map/main.png"></img>
       </div>
       <div className="bg-grey">
           <div className="text-white text-base p-4 font-bold bg-black text-center">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div>
@@ -55,7 +55,7 @@ export default function Shelves() {
 
               <div className="col-span-10 p-4">
                  <div className="text-white">How easy do you think it would be to remember different configurations?</div>
-                 <div className="text-white opacity-50 text-xs">i.e. remember different book placements for a range of authorised tasks</div>
+                 <div className="text-white opacity-50 text-xs">i.e. remember different pin placements for a range of authorised tasks</div>
               </div>
               <div className="color white w-full pl-6 pr-6">
                     <div className="bg-lightgray p-4">
@@ -147,7 +147,7 @@ export default function Shelves() {
                 </div>   
             </div>
             <div className="w-full flex justify-center p-2">
-            <Link href="/lamp">
+            <Link href="/clock">
                 <a className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
             </Link>
             </div>

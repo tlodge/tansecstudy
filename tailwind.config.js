@@ -9,7 +9,8 @@ module.exports = {
         white: "#fff",
         lightgray: "#44505A",
         gray: "#454A59",
-        darkgray: "#2F3D49"
+        darkgray: "#2F3D49",
+        orange: "#FF6445"
       },
       transitionDuration: {
         '0': '0ms',
