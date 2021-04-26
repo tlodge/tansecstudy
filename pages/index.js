@@ -90,7 +90,7 @@ export default function Shelves() {
 
               <div className="col-span-10 p-4">
                  <div className="text-white">How would you rate this system?</div>
-                 <div className="text-white opacity-50 text-xs">please consider how easy it would be to use as well as security</div>
+                 <div className="text-white opacity-50 text-xs">taking into account ease of use and security</div>
               </div>
               <div className="color white w-full pl-6 pr-6">
                     <div className="bg-lightgray p-4">
