@@ -32,11 +32,11 @@ export default function Map() {
                     <div className="grid grid-cols-12 mb-4">
                         <div className="col-span-4">
                                <div className="text-lg text-white">Insecure</div> 
-                               <div className="text-xs pr-6 text-orange ">This would not offer any extra security in my home</div> 
+                               <div className="text-xs pr-6 text-orange ">This would provide little to no extra security</div> 
                         </div>
                         <div className="col-span-4">
                                <div className="text-lg text-white">Mostly Secure</div> 
-                               <div className="text-xs pr-6 text-orange">This would add more security though I see how it could be broken</div> 
+                               <div className="text-xs pr-6 text-orange">This would add more security but there are some weaknesses</div> 
                         </div>
                         <div className="col-span-4">
                                <div className="text-lg text-white">Secure</div> 
@@ -50,6 +50,7 @@ export default function Map() {
                     </div>
 
               </div>
+
 
 
 
@@ -67,16 +68,16 @@ export default function Map() {
                             <input type="radio" className="form-radio" name="memory" value="0"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                            <input type="radio" className="form-radio" name="memory" value="1"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                            <input type="radio" className="form-radio" name="memory" value="2"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                            <input type="radio" className="form-radio" name="memory" value="3"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="memory" value="0"/>
+                            <input type="radio" className="form-radio" name="memory" value="4"/>
                         </div>
                         <div className="col-span-1">
                                <div className="text-xs font-bold text-orange">Very Easy</div> 
@@ -101,16 +102,16 @@ export default function Map() {
                             <input type="radio" className="form-radio" name="rating" value="0"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="rating" value="0"/>
+                            <input type="radio" className="form-radio" name="rating" value="1"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="rating" value="0"/>
+                            <input type="radio" className="form-radio" name="rating" value="2"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="rating" value="0"/>
+                            <input type="radio" className="form-radio" name="rating" value="3"/>
                         </div>
                         <div className="col-span-1 text-center">
-                            <input type="radio" className="form-radio" name="rating" value="0"/>
+                            <input type="radio" className="form-radio" name="rating" value="4"/>
                         </div>
                         <div className="col-span-1 ">
                             <div className="text-xs text-orange font-bold">I love it</div> 
