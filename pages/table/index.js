@@ -1,29 +1,32 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Shelves({id}) {
- 
+Table.getInitialProps = async ({ query }) => {
+    const {id} = query
+    return {id}
+}
+
+export default function Table({id}) {
   return (
       <div className="flex flex-grow justify-center bg-black p-4">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
-        <title>Shelves</title>
+        <title>Table</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC shelves</div>
+    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC table</div>
       <div className="bg-gray w-full p-0 m-0">
-        <img src="shelves/main.png"></img>
+        <img src="table/main.png"></img>
       </div>
-      <div className="bg-grey ">
+      <div className="bg-grey">
           <div className="text-white text-base p-4 font-bold bg-black text-center">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div>
           <div className="grid grid-cols-12">
               <div className="col-span-10 p-4 text-white">
                  Do you understand the overall approach?
               </div>
-              <div className="col-span-2 p-4 text-white text-bold ">
+              <div className="col-span-2 p-4 text-white text-bold">
                     YES / NO
               </div>
-             
               <div className="col-span-12 p-4">
                  <div className="text-white">How secure do you judge the approach to be?</div>
                  <div className="text-white opacity-50 text-xs">assuming you don't necessarily trust everyone in your home</div>
@@ -57,7 +60,7 @@ export default function Shelves({id}) {
 
               <div className="col-span-10 p-4">
                  <div className="text-white">How easy do you think it would be to remember different configurations?</div>
-                 <div className="text-white opacity-50 text-xs">i.e. remember different book placements for a range of authorised tasks</div>
+                 <div className="text-white opacity-50 text-xs">i.e. remember different object placements on the table for a range of authorised tasks</div>
               </div>
               <div className="color white w-full pl-6 pr-6">
                     <div className="bg-lightgray p-4">
@@ -149,17 +152,11 @@ export default function Shelves({id}) {
                 </div>   
             </div>
             <div className="w-full flex justify-center p-2">
-            <Link href={`/lamp?id=${id}`}>
+            <Link href="/">
                 <a className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
             </Link>
             </div>
        </div> 
     </div>
   )
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {id: Math.round(Math.random()  * 50000)}
-  }
 }

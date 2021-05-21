@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Shelves() {
+export default function Shelves({id}) {
+ 
   return (
       <div className="flex flex-grow justify-center bg-black p-4">
     <div className="bg-gray w-766 p-0 m-0">
@@ -13,15 +14,16 @@ export default function Shelves() {
       <div className="bg-gray w-full p-0 m-0">
         <img src="shelves/main.png"></img>
       </div>
-      <div className="bg-grey">
+      <div className="bg-grey ">
           <div className="text-white text-base p-4 font-bold bg-black text-center">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div>
           <div className="grid grid-cols-12">
               <div className="col-span-10 p-4 text-white">
                  Do you understand the overall approach?
               </div>
-              <div className="col-span-2 p-4 text-white text-bold">
+              <div className="col-span-2 p-4 text-white text-bold ">
                     YES / NO
               </div>
+             
               <div className="col-span-12 p-4">
                  <div className="text-white">How secure do you judge the approach to be?</div>
                  <div className="text-white opacity-50 text-xs">assuming you don't necessarily trust everyone in your home</div>
@@ -147,11 +149,17 @@ export default function Shelves() {
                 </div>   
             </div>
             <div className="w-full flex justify-center p-2">
-            <Link href="/">
+            <Link href={`/lamp?id=${id}`}>
                 <a className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
             </Link>
             </div>
        </div> 
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  return {
+    props: {id: Math.round(Math.random()  * 50000)}
+  }
 }

@@ -1,7 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Clock() {
+Clock.getInitialProps = async ({ query }) => {
+    const {id} = query
+    return {id}
+}
+
+
+export default function Clock({id}) {
   return (
       <div className="flex flex-grow justify-center bg-black p-4">
     <div className="bg-gray w-766 p-0 m-0">
@@ -148,7 +154,7 @@ export default function Clock() {
                 </div>   
             </div>
             <div className="w-full flex justify-center p-2">
-            <Link href="/noticeboard">
+            <Link href={`/noticeboard?id=${id}`}>
                 <a className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
             </Link>
             </div>
