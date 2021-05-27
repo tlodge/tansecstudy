@@ -11,7 +11,7 @@ Lamp.getInitialProps = async ({ query }) => {
 export default function Lamp({id, submit, answeredQuestion, readyToSubmit}) {
 
   return (
-      <div className="flex flex-grow justify-center bg-black p-4">
+      <div className="flex flex-grow justify-center bg-black p-2 h-full">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>Lamp</title>
