@@ -21,7 +21,7 @@ export default function Clock({id, submit, answeredQuestion, readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="clock/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="clock" next="noticeboard" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="clock" next="noticeboard" config="remember different sphere combinations for different tasks" />
        </div> 
     </div>
   )

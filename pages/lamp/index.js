@@ -21,7 +21,7 @@ export default function Lamp({id, submit, answeredQuestion, readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="lamp/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="lamp" next="map" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="lamp" next="map" config="remember different lamp pivot positions for different tasks"/>
        </div> 
     </div>
   )

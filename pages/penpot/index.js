@@ -20,7 +20,7 @@ export default function Penpot({id, submit, answeredQuestion, readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="penpot/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="penpot" next="chess" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="penpot" next="chess" config="remember different pen combinations for different tasks"/>
        </div> 
     </div>
   )

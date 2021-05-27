@@ -3,14 +3,16 @@ import Link from 'next/link'
 export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
 
   return (
-      <div className="flex flex-grow flex-col  justify-center bg-gray p-10">
+      <div className="flex flex-grow flex-col  justify-center bg-lightgray p-10">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>TANSEC Multifactor authentication study</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
     </div>
+    <div className="bg-darkgray p-6 rounded shadow-xl">
       <div className="text-xl text-bold flex-col text-white text-center">TANSEC Multifactor authentication study</div>
+   
       <div className="text-base text-white pt-10 pb-10">
          We're investigating ways that we can help users to perform complicated home network security tasks by interacting with common household objects. 
        </div>
@@ -25,10 +27,10 @@ export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
       </div>
       <div className="text-2xl p-10 text-white text-center">
           <Link href={`/consent`}>
-              <a className="text-orange font-bold text-center">Get started</a>
+              <a className="text-orange font-bold text-center">GET STARTED</a>
           </Link>
       </div>
-      
+      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import {useState, useEffect} from 'react';
 
-export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmit, solution, next}) {
+export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmit, solution, next, config}) {
   
   const [understand, setUnderstand] = useState();
   const [secure, setSecure] = useState();
@@ -64,6 +64,17 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
     })
   },[understand, secure, securityfollowup,memory,rating,ratingfollowup,use, usefollowup, feedback]);
 
+  const calcsecuritystyle = (value)=>{
+    return {
+        background: secure===value  ? "#4087CF" :"none", 
+        borderRadius:secure===value ? 6 : 0,
+        boxShadow: secure===value ? "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)" : "none",
+        padding: 10,
+        margin: 8,    
+    }
+  }
+
+
   const renderSecureFollowup = ()=>{
     return <div>
               <div className="text-white text-sm mt-6 mb-1">
@@ -75,10 +86,10 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
 
   const renderUnderstand = ()=>{
       return  <div className="grid grid-cols-12">
-              <div className="col-span-10 p-4 text-white">
+              <div className="col-span-9 p-4 text-white ">
                  Do you understand the overall approach?
               </div>
-              <div className="col-span-2 p-4 text-white text-bold" onClick={answerUnderstand}>
+              <div className="col-span-3 p-4 text-white text-bold text-xs" onClick={answerUnderstand}>
                     <span style={{"color" : understand ? "red" : "white"}}>YES</span> / <span style={{"color" : understand == false ? "red" : "white"}}>NO</span>
               </div>
       </div>
@@ -86,26 +97,27 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
 
   const renderSecure = ()=>{
     return <>
+            <hr className="text-lightgray m-4"/>
             <div className="grid grid-cols-12">
               <div className="col-span-12 p-4">
                  <div className="text-white">How secure do you judge the approach to be?</div>
                  <div className="text-white opacity-50 text-xs">assuming you don't necessarily trust everyone in your home</div>
                </div>
             </div>
-            <div className="color white w-full pl-6 pr-6">
+            <div className="color white w-full pl-6 pr-6 pb-6">
                     <div className="bg-lightgray p-4">
                     <div className="grid grid-cols-12 mb-4">
-                        <div style={{background: secure==="insecure" ? "red" :"none", padding:10, margin:8}}onClick={()=>answerSecure("insecure")} className="col-span-4">
-                               <div className="text-lg text-white">Insecure</div> 
-                               <div className="text-xs pr-6 text-orange ">This would provide little to no extra security</div> 
+                        <div style={calcsecuritystyle("insecure")} onClick={()=>answerSecure("insecure")} className="col-span-12 md:col-span-4">
+                               <div className="text-lg text-orange">Insecure</div> 
+                               <div className="text-xs pr-6 text-white ">This would provide little to no extra security</div> 
                         </div>    
-                        <div style={{background: secure==="mostly secure" ? "red" :"none", padding:10, margin:8}} onClick={()=>answerSecure("mostly secure")} className="col-span-4">
-                               <div className="text-lg text-white">Mostly Secure</div> 
-                               <div className="text-xs pr-6 text-orange">This would add more security but there are some weaknesses</div> 
+                        <div style={calcsecuritystyle("mostly secure")}  onClick={()=>answerSecure("mostly secure")} className="col-span-12 md:col-span-4">
+                               <div className="text-lg text-orange">Mostly Secure</div> 
+                               <div className="text-xs pr-6 text-white">This would add more security but there are some weaknesses</div> 
                         </div>
-                        <div style={{background: secure==="secure" ? "red" :"none", padding:10, margin:8}} onClick={()=>answerSecure("secure")} className="col-span-4">
-                               <div className="text-lg text-white">Secure</div> 
-                               <div className="text-xs pr-6 text-orange">This is a secure solution that would be difficult to break</div> 
+                        <div style={calcsecuritystyle("secure")}  onClick={()=>answerSecure("secure")} className="col-span-12 md:col-span-4">
+                               <div className="text-lg text-orange">Secure</div> 
+                               <div className="text-xs pr-6 text-white">This is a secure solution that would be difficult to break</div> 
                         </div>
                     </div>
                     
@@ -116,11 +128,12 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   }
 
   const renderMemory = ()=>{
-    return <><div className="col-span-10 p-4">
+    return <><hr className="text-lightgray m-4"/>
+             <div className="col-span-10 p-4">
                  <div className="text-white">How easy do you think it would be to remember different configurations?</div>
-                 <div className="text-white opacity-50 text-xs">i.e. remember different book placements for a range of authorised tasks</div>
+                 <div className="text-white opacity-50 text-xs">{`i.e. ${config}`}</div>
               </div>
-              <div className="color white w-full pl-6 pr-6">
+              <div className="color white w-full pl-6 pr-6 pb-6">
                     <div className="bg-lightgray p-4">
                     <div className="grid grid-cols-7">
                         <div className="col-span-1">
@@ -151,11 +164,12 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
 
   const renderRating = ()=>{
     return <>
+              <hr className="text-lightgray m-4"/>
               <div className="col-span-10 p-4">
                  <div className="text-white">How would you rate this system?</div>
                  <div className="text-white opacity-50 text-xs">taking into account ease of use and security</div>
               </div>
-              <div className="color white w-full pl-6 pr-6">
+              <div className="color white w-full pl-6 pr-6 pb-6">
                     <div className="bg-lightgray p-4">
                     <div className="grid grid-cols-7 mb-4">
                         <div className="col-span-1">
@@ -189,45 +203,45 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   }
 
   const renderUse = ()=>{
-    return  <div className="grid grid-cols-12">
-    <div className="col-span-10 p-4 text-white">
+    return <> <hr className="text-lightgray m-4"/><div className="grid grid-cols-12 pb-4">
+    <div className="col-span-9 p-4 text-white">
         Would you ever consider using this system?
     </div>
 
-    <div onClick={answerUse} className="col-span-2 p-4 text-white text-bold">
+    <div onClick={answerUse} className="col-span-3 p-4 text-white text-bold">
         <span style={{"color" : use ? "red" : "white"}}>YES</span> / <span style={{"color" : use == false ? "red" : "white"}}>NO</span>
     </div>
-    <div className="col-span-12 pl-4 mb-1 text-white text-sm">
+    <div className="col-span-12 pl-4 mb-1 text-white">
         Why did you give this answer?
     </div>
     <div className="col-span-12 pl-4 text-black text-bold">
         <textarea  onChange={(e)=>answerUseFollowup(e.target.value)} className="resize border rounded-md w-full"></textarea>
     </div>
-</div>   
+</div>   </>
   }
 
   const renderFeedback = ()=>{
-      return <div className="p-4">
+      return <><hr className="text-lightgray m-4"/><div className="p-4">
           <div className="text-white mb-2">
               Please provide any thoughts or feedback on this solution
           </div>
           <div className="">
               <textarea  onChange={(e)=>answerFeedback(e.target.value)} className="resize border rounded-md w-full"></textarea>
           </div>
-      </div>   
+      </div>   </>
   }
 
   return (<>
-        <div className="bg-grey ">
-          <div className="text-white text-base p-4 font-bold bg-black text-center">
-              Please answer the following <span className="text-orange">six questions</span> about the solution above.
-          </div> 
+        <div className="bg-darkgray text-xs md:text-base pb-10">
+          <hr className="text-white mb-6"/>
+              <div className="text-white text-center p-2">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div> 
+          <hr className="text-white mb-6 mt-6"/>
           {renderUnderstand()}
-          {renderSecure()}
-          {renderMemory()}
-          {renderRating()}
-          {renderUse()}
-          {renderFeedback()}
+          {understand && renderSecure()}
+          {understand && secure && renderMemory()}
+          {understand && secure && memory && renderRating()}
+          {understand && secure && memory && rating && renderUse()}
+          {understand && secure && memory && rating && use && renderFeedback()}
         </div>
         {readyToSubmit(solution) && <div className="w-full flex justify-center p-2">
             <Link href={`/${next}?id=${id}`}>

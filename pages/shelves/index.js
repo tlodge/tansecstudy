@@ -16,7 +16,7 @@ export default function Shelves({id, submit, answeredQuestion, readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="shelves/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="shelves" next="lamp" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="shelves" next="lamp" config="remember different book positions for different tasks" />
        </div> 
     </div>
   )

@@ -20,7 +20,7 @@ export default function Chess({id, submit, answeredQuestion, readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="chess/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="chess" next="table" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="chess" next="table" config="remember different piece configurations for different tasks"/>
        </div> 
     </div>
   )

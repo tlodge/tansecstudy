@@ -21,7 +21,7 @@ export default function NoticeBoard({id, submit, answeredQuestion, readyToSubmit
       <div className="bg-gray w-full p-0 m-0">
         <img src="noticeboard/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="noticeboard" next="mirror" />
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="noticeboard" next="mirror" config="remember different noticeboard pin configurations for different tasks" />
        </div> 
     </div>
   )
