@@ -12,7 +12,7 @@ Map.getInitialProps = async ({ query }) => {
 
 export default function Map({id, submit, answeredQuestion, readyToSubmit}) {
   return (
-      <div className="flex flex-grow justify-center bg-black p-2 h-full">
+      <div className="flex flex-grow justify-center bg-black p-2 h-screen">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>Map</title>

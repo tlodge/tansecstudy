@@ -70,7 +70,7 @@ export default function Consent({id}) {
     },[consent]);
 
 return (
-      <div className="flex flex-grow justify-center bg-gray text-white flex-col p-10">
+      <div className="flex flex-grow justify-center bg-gray text-white flex-col p-2">
         <div>
             <Head>
                 <title>TANSEC Multifactor authentication study - consent</title>
@@ -78,7 +78,7 @@ return (
             </Head>
         </div>
 
-        <div className="text-lg pb-6 text-center text-white">TANSEC Multifactor authentication study - information sheet and consent form</div>
+        <div className="text-lg pb-6 mt-4 text-center text-white">TANSEC Multifactor authentication study - information sheet and consent form</div>
         <div className="mb-6 p-6 bg-darkgray rounded"> {/*information*/}
 
             <div className="text-xl text-bold">Study Information</div>

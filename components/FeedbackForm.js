@@ -242,12 +242,13 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
           {understand && secure && memory && renderRating()}
           {understand && secure && memory && rating && renderUse()}
           {understand && secure && memory && rating && use && renderFeedback()}
-        </div>
+        
         {readyToSubmit(solution) && <div className="w-full flex justify-center p-2">
             <Link href={`/${next}?id=${id}`}>
               <a onClick={()=>submit(solution)} className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
             </Link>
           </div>}
+          </div>
        </> 
   )
 }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
 
   return (
-      <div className="flex flex-grow flex-col  justify-center bg-lightgray p-10">
+      <div className="flex flex-grow flex-col  justify-center bg-lightgray p-2">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>TANSEC Multifactor authentication study</title>

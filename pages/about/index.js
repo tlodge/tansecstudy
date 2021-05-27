@@ -50,7 +50,7 @@ export default function About({id}) {
     }
   }
   return (
-    <div className="flex flex-grow justify-center bg-lightgray p-4">
+    <div className="flex flex-grow justify-center bg-lightgray p-1">
         <div className="bg-gray w-766 p-0 m-0 rounded shadow-xl">
             <Head>
                 <title>About you</title>

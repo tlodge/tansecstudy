@@ -6,7 +6,7 @@ import FeedbackForm from '../../components/FeedbackForm';
 export default function Shelves({id, submit, answeredQuestion, readyToSubmit}) {
  
   return (
-      <div className="flex flex-grow justify-center bg-black p-2 h-full">
+      <div className="flex flex-grow justify-center bg-black p-2 h-screen">
     <div className="bg-gray w-766 p-0 m-0">
       <Head>
         <title>Shelves</title>
