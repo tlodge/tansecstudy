@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import {useState, useEffect} from 'react'
-
+import request from 'superagent';
 import { useRouter } from 'next/router'
 
 
@@ -22,7 +22,8 @@ export default function About({id}) {
     setHousehold(value);
   }
 
-  const next = ()=>{
+  const next = async ()=>{
+    await request.post('/api/about').set('Content-Type', 'application/json').send({id:Number(id),household, experience});
     router.push(`/shelves?id=${id}`);
   }
 

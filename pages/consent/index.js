@@ -2,6 +2,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import {useState, useEffect} from 'react';
 import { useRouter } from 'next/router'
+import request from 'superagent';
+
+const questions = ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","q15"];
 
 export default function Consent({id}) {
     const router = useRouter()
@@ -30,8 +33,14 @@ export default function Consent({id}) {
         )
     }
 
-    const getStarted = ()=>{
+    const getStarted = async ()=>{
         if (complete){
+            const consented = questions.reduce((acc, item)=>{
+                if (item != "all" && consent[item] && consent[item]["yes"])
+                    return [...acc, item]
+                return acc;
+            },[]);
+            await request.post('/api/consent').set('Content-Type', 'application/json').send({id,questions:consented});
             router.push(`/about?id=${id}`);
         }
     }
@@ -48,7 +57,7 @@ export default function Consent({id}) {
         }else{
             setConsent({...consent,
                 [number] : {[label] : value},
-                all : {"yes" : _consent["all"]["yes"] === true && label === "yes"}
+                all : {"yes" : _consent["all"] ? _consent["all"]["yes"] === true && label === "yes" : false}
             });
         }
     }
@@ -62,7 +71,7 @@ export default function Consent({id}) {
 
     useEffect(()=>{
         console.log("have consent", consent);
-        const complete = ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","q15"].reduce((acc, item)=>{
+        const complete = questions.reduce((acc, item)=>{
             return acc && consent[item] ?  true : false
         },true)
 
@@ -70,7 +79,7 @@ export default function Consent({id}) {
     },[consent]);
 
 return (
-      <div className="flex flex-grow justify-center bg-gray text-white flex-col p-2">
+      <div className="flex flex-grow justify-center bg-vlightgray text-white flex-col p-2">
         <div>
             <Head>
                 <title>TANSEC Multifactor authentication study - consent</title>
@@ -78,42 +87,53 @@ return (
             </Head>
         </div>
 
-        <div className="text-lg pb-6 mt-4 text-center text-white">TANSEC Multifactor authentication study - information sheet and consent form</div>
-        <div className="mb-6 p-6 bg-darkgray rounded"> {/*information*/}
-
+        <div className="text-lg pb-6 mt-4 text-center text-black">TANSEC Multifactor authentication study - information sheet and consent form</div>
+        
+        <div className="mb-6 p-6 bg-darkgray rounded shadow-xl"> {/*information*/}
+        <div className="flex flex-row items-center justify-center">
+            <Link href={`/ethics/Information.pdf`}><a target="_blank" className="text-orange pl-2 pr-6 pb-6  pt-6">Download Information Sheet (opens in new tab)</a></Link>
+            <Link href={`/ethics/Privacynotice.pdf`}><a target="_blank" className="text-orange p-6">Download Privacy Notice (opens in new tab)</a></Link>
+        </div>
             <div className="text-xl text-bold">Study Information</div>
             <hr className="mt-5 mb-5"/>
-            <div className="text-sm">The following is an overview of the study and how we propose to manage the data from your responses to the quesionnaire.  Please have a read through before deciding whether to give your consent.  A hard copy of the information sheet can be found <Link href={`/information.pdf`}><a className="text-orange">here.</a></Link></div>
+            <div className="text-sm">The following is an overview of the study and how we propose to manage the data from your responses to the quesionnaire.  Please have a read through before deciding whether to give your consent.  A hard copy of the information sheet can be found <Link href={`/ethics/Information.pdf`}><a className="text-orange">here.</a></Link></div>
             <hr className="mt-5 mb-5"/>
             <div style={{height:380, overflowY:"auto"}}>
             <div className="text-bold pt-6 text-orange">Purpose of the research.</div>
             <div className="text-sm">
                 This study investigates new approaches to multi-factor authentication (i.e., using multiple means to verify that a user is allowed to perform a privileged task).  The study presents a set of solutions that embed secrets within common household objects (such as tables, noticeboards, shelves, mirrors, pen pots).  These secrets are used as a part of the process to permit users to perform tasks on their home network and smart devices, such as, for example, setting up a virtual private network (VPN).
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Nature of participation.</div>
             <div className="text-sm">
                 Participation in the research is voluntary and relies on the participant providing data through an online questionnaire.
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Participant engagement.</div>
             <div className="text-sm">
                 In taking part in this study, participants will first be asked two general questions about their security experience and the type of household they live in.  They will then be presented with nine different solutions and will be asked a set of structured questions on each. These questions relate to a participant’s perceptions on a solution’s security and how easy it is to understand and use.
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Benefits and risks of the research.</div>
             <div className="text-sm">
                 This work will investigate whether household objects used in authentication is an acceptable and understandable approach to multifactor authentication. It will gather user perceptions and reactions to a range of solutions and determine whether there are a set of features of the solution that are more promising and warrant further study.  This research may therefore result in new approaches to multifactor authentication that are both secure and usable and which may offer better approaches than those currently in use.  There is very little risk involved in participating in this research.  No personal identifiers are recorded during this research and no participants can be identified unless personal information is entered in response to free text questions (in which case it will be anonymised).  
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Use of your data.</div>
             <div className="text-sm">
                 Aggregate results of the work will be discussed amongst a small group of researchers involved in the project.  The results of the research will be disseminated in publications and presentations, but it will not be possible to identify any study participants in this material.
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Future use of your data.</div> 
             <div className="text-sm">
                 The data may be archived and reused in future for purposes that are in the public interest, or for historical, scientific or statistical purposes. 
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Procedure for withdrawal from the research.</div> 
             <div className="text-sm">
                 You may withdraw from the study at any time and do not have to give reasons for why you no longer want to take part. If you wish to withdraw please contact the researcher who gathered the data, this can be done via email: thomas.lodge@nottingham.ac.uk. Because we do not seek any identifying information, <span className="text-orange"> to withdraw you will need to provide the following code:  {id} </span>which we will use to locate your responses and delete them. If you receive no response from the researcher please contact the School of Computer Science’s Ethics Committee. This research is being conducted by a researcher in the Horizon Centre for Doctoral Training. It has been reviewed and approved by the University of Nottingham, School of Computer Science Research Ethics Committee.
             </div>
+            <hr className="text-lightgray mt-8"/>
             <div className="text-bold pt-6 text-orange">Contact details of the ethics committee.</div> 
             <div className="text-sm">
                 If you wish to file a complaint or exercise your rights you can contact the Ethics Committee at the following address: cs-ethicsadmin@cs.nott.ac.uk
@@ -121,7 +141,7 @@ return (
         </div>
     </div>
        
-        <div className="bg-darkgray p-6 rounded">
+        <div className="bg-darkgray p-6 rounded shadow-xl">
      
         
         <div className="text-xl text-bold">Your consent</div>
@@ -129,13 +149,11 @@ return (
         <hr className="mt-5 mb-5"/>
         <div className="text-sm">Before you are able to take part in this study, you will need to provide your consent to each of the following statements.</div>
         <hr className="mt-5 mb-5"/>
-        <div className="flex flex-row text-sm">
-            <div className="flex flex-grow" style={{width:300}}></div>
-            <div className="w-54 pr-7  flex items-center justify-center" >
+        <div className="flex flex-row text-sm items-center justify-center">
+            <div>
                 <input   onChange={(e)=>checkAll("yes", e.target.checked)} type="checkbox" id="yes" name="yes" checked={amChecked("all", "yes")}/><label className="pl-2 pr-6">yes to all</label>
-               
             </div>    
-            </div>
+        </div>
         <div className="text-bold pt-6 pb-4 text-orange">Taking part in the study</div>
         
         <div className="flex flex-row text-sm">
@@ -164,7 +182,7 @@ return (
                 <input  onChange={(e)=>checked("q3", "no", e.target.checked)} checked={amChecked("q3", "no")}  type="checkbox" id="no" name="no"/><label className="pl-2 pr-6" >no</label>
             </div>    
         </div> 
-
+        <hr className="text-lightgray mt-8"/>
         <div className="text-bold pt-6 pb-4 text-orange">Use of my data in the study</div>
         <div className="flex flex-row text-sm">
             <div className="flex-grow pr-6"> I understand that data which can identify me will not be shared beyond the project team.</div>
@@ -229,7 +247,7 @@ return (
                 <input  onChange={(e)=>checked("q9", "no", e.target.checked)} checked={amChecked("q9", "no")}  type="checkbox" id="no" name="no"/><label className="pl-2 pr-6" >no</label>
             </div>    
         </div> 
-
+        <hr className="text-lightgray mt-8"/>
         <div className="text-bold pt-6 pb-4 text-orange">Reuse of my data</div>
         <div className="flex flex-row text-sm">
             <div className="flex-grow pr-6">
@@ -250,7 +268,7 @@ return (
             </div>    
         </div> 
       
-
+        <hr className="text-lightgray mt-8"/>
         <div className="text-bold pt-6 pb-4 text-orange">Security of my data</div>
         <div className="flex flex-row text-sm">
             <div className="flex-grow pr-6">
@@ -263,7 +281,7 @@ return (
         </div> 
         <div className="flex flex-row pt-4 text-sm">
             <div className="flex-grow pr-6" style={{width:300}}>
-            I confirm these safeguards have been shown to online in the University’s privacy notice, and that they are acceptable to me.
+            I confirm these safeguards are available to me online in the University’s <a className="text-orange" target="_blank" href="/ethics/Privacynotice.pdf">privacy notice</a>, and that they are acceptable to me.
             </div>
             <div className="w-54 flex items-center justify-center" >
                 <input  onChange={(e)=>checked("q13", "yes", e.target.checked)} checked={amChecked("q13", "yes")}type="checkbox" id="yes" name="yes"/><label className="pl-2 pr-6">yes</label>
@@ -279,7 +297,7 @@ return (
                 <input  onChange={(e)=>checked("q14", "no", e.target.checked)} checked={amChecked("q14", "no")}  type="checkbox" id="no" name="no"/><label className="pl-2 pr-6" >no</label>
             </div>    
         </div> 
-
+        <hr className="text-lightgray mt-8"/>
         <div className="text-bold pt-6 pb-4 text-orange">Copyright</div>
         <div className="flex flex-row text-sm">
             <div className="flex-grow pr-6">
@@ -291,7 +309,7 @@ return (
                 <input  onChange={(e)=>checked("q15", "no", e.target.checked)} checked={amChecked("q15", "no")}  type="checkbox" id="no" name="no"/><label className="pl-2 pr-6" >no</label>
             </div>    
         </div>
-
+        <hr className="text-lightgray mt-8"/>
            <div className="text-bold pt-6 pb-4 text-orange">Researcher's contact details</div>
         <div className="flex flex-col text-sm">
             <div>
@@ -304,12 +322,13 @@ return (
                 Email: thomas.lodge@nottingham.ac.uk
             </div>
         </div>
-        </div>
         <div className="text-2xl p-10 text-white text-center">
        
-              <div onClick={getStarted} className="text-orange font-bold text-center" style={{opacity: complete? 1: 0.3}}>GET STARTED</div>
-      
-      </div>
+       <div onClick={getStarted} className="text-orange font-bold text-center" style={{opacity: complete? 1: 0.3}}>GET STARTED</div>
+
+</div>
+        </div>
+       
     </div>
   )
 }

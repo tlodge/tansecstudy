@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {useState, useEffect} from 'react';
 
+
 export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmit, solution, next, config}) {
   
   const [understand, setUnderstand] = useState();
@@ -13,8 +14,8 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   const [usefollowup, setUseFollowup] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  const answerUnderstand = ()=>{
-    setUnderstand(!understand);
+  const answerUnderstand = (value)=>{
+    setUnderstand(value);
   }
 
   const answerSecure = (security)=>{
@@ -37,8 +38,8 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
     setRating(e.target.value);
   }
 
-  const answerUse = ()=>{
-    setUse(!use);
+  const answerUse = (value)=>{
+    setUse(value);
   }
 
   const answerUseFollowup = (text)=>{
@@ -80,7 +81,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
               <div className="text-white text-sm mt-6 mb-1">
                   In what way(s) could you imagine security being compromised?
               </div>
-              <textarea onChange={(e)=>answerSecurityFollowup(e.target.value)} className="resize border rounded-md w-full"></textarea>
+              <textarea onChange={(e)=>answerSecurityFollowup(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
           </div>
   }
 
@@ -89,8 +90,8 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
               <div className="col-span-9 p-4 text-white ">
                  Do you understand the overall approach?
               </div>
-              <div className="col-span-3 p-4 text-white text-bold text-xs" onClick={answerUnderstand}>
-                    <span style={{"color" : understand ? "red" : "white"}}>YES</span> / <span style={{"color" : understand == false ? "red" : "white"}}>NO</span>
+              <div className="col-span-3 p-4 text-white text-bold text-xs" >
+                    <span onClick={()=>answerUnderstand("yes")} style={{"color" : understand == "yes" ? "red" : "white"}}>YES</span> / <span onClick={()=>answerUnderstand("no")}  style={{"color" : understand == "no" ? "red" : "white"}}>NO</span>
               </div>
       </div>
   }
@@ -195,7 +196,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
                         </div>
                     </div>
                         <div className="text-white mb-4 text-sm">Why did you provide this rating?</div>
-                        <textarea onChange={(e)=>answerRatingFollowup(e.target.value)}  className="resize border rounded-md w-full"></textarea>
+                        <textarea onChange={(e)=>answerRatingFollowup(e.target.value)}  className="resize border rounded-md w-full p-2"></textarea>
                     </div>
 
                 </div>
@@ -208,14 +209,14 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
         Would you ever consider using this system?
     </div>
 
-    <div onClick={answerUse} className="col-span-3 p-4 text-white text-bold">
-        <span style={{"color" : use ? "red" : "white"}}>YES</span> / <span style={{"color" : use == false ? "red" : "white"}}>NO</span>
+    <div className="col-span-3 p-4 text-white text-bold">
+        <span onClick={()=>answerUse("yes")} style={{"color" : use == "yes" ? "red" : "white"}}>YES</span> / <span onClick={()=>answerUse("no")}  style={{"color" : use == "no" ? "red" : "white"}}>NO</span>
     </div>
     <div className="col-span-12 pl-4 mb-1 text-white">
         Why did you give this answer?
     </div>
     <div className="col-span-12 pl-4 text-black text-bold">
-        <textarea  onChange={(e)=>answerUseFollowup(e.target.value)} className="resize border rounded-md w-full"></textarea>
+        <textarea  onChange={(e)=>answerUseFollowup(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
     </div>
 </div>   </>
   }
@@ -226,7 +227,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
               Please provide any thoughts or feedback on this solution
           </div>
           <div className="">
-              <textarea  onChange={(e)=>answerFeedback(e.target.value)} className="resize border rounded-md w-full"></textarea>
+              <textarea  onChange={(e)=>answerFeedback(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
           </div>
       </div>   </>
   }
@@ -237,11 +238,11 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
               <div className="text-white text-center p-2">Please answer the following <span className="text-orange">six questions</span> about the solution above.</div> 
           <hr className="text-white mb-6 mt-6"/>
           {renderUnderstand()}
-          {understand && renderSecure()}
-          {understand && secure && renderMemory()}
-          {understand && secure && memory && renderRating()}
-          {understand && secure && memory && rating && renderUse()}
-          {understand && secure && memory && rating && use && renderFeedback()}
+          {understand == "yes" && renderSecure()}
+          {understand == "yes" && secure && renderMemory()}
+          {understand == "yes" && secure && memory && renderRating()}
+          {understand == "yes" && secure && memory && rating && renderUse()}
+          {understand == "yes" && secure && memory && rating && use && renderFeedback()}
         
         {readyToSubmit(solution) && <div className="w-full flex justify-center p-2">
             <Link href={`/${next}?id=${id}`}>
