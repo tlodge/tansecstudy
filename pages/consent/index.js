@@ -324,7 +324,7 @@ return (
         </div>
         <div className="text-2xl p-10 text-white text-center">
        
-       <div onClick={getStarted} className="text-orange font-bold text-center" style={{opacity: complete? 1: 0.3}}>GET STARTED</div>
+       <div onClick={getStarted} className="text-orange font-bold text-center" style={{cursor: "pointer", opacity: complete? 1: 0.3}}>GET STARTED</div>
 
 </div>
         </div>

@@ -20,14 +20,14 @@ export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
         In this study we're considering solutions that might help people to set up a secure connection (a VPN) between their mobile device and the devices in their homes. To set up this connection, secure keys have to be exchanged between a mobile phone and the home router.  It is important that these keys are not leaked to anyone, as they would then be able to gain access to your home network. 
       </div>
       <div className="text-base text-white pb-10">
-      Each of the nine solutions presented in this study require some form of interaction between a householder and an object in the home, before keys can then be exchanged.  We would like to determine how acceptable, practical and understandable each solution is, and more generally, to determine which features (if any) of these approaches might form the basis of a secure usable solution for home user authentication.
+      Each of the nine solutions presented in this study require some form of interaction between a householder and an object in the home before keys can then be exchanged.  We would like to determine how acceptable, practical and understandable each solution is, and more generally, to understand which features (if any) could be developed to create secure usable solutions for home user authentication.
       </div>
       <div className="text-base text-white">
          If you are willing to take part, the study shouldn't take more than 15 minutes of your time. To get going, we'll first need to get your consent to take part in the study, which we'll do next.
       </div>
       <div className="text-2xl p-10 text-white text-center">
           <Link href={`/consent`}>
-              <a className="text-orange font-bold text-center">GET STARTED</a>
+              <a className="text-orange font-bold text-center" style={{cursor: "pointer"}}>GET STARTED</a>
           </Link>
       </div>
       </div>
