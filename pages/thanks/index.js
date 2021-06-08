@@ -22,9 +22,3 @@ export default function Thanks() {
     </div>
   )
 }
-
-export async function getServerSideProps(context) {
-  return {
-    props: {id: Math.round(Math.random()  * 50000)}
-  }
-}

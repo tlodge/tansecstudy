@@ -3,6 +3,11 @@ import Link from 'next/link'
 import FeedbackForm from '../../components/FeedbackForm';
 
 
+Shelves.getInitialProps = async ({ query }) => {
+  const {id} = query
+  return {id}
+}
+
 export default function Shelves({id, submit, answeredQuestion, readyToSubmit}) {
  
   return (
