@@ -18,7 +18,7 @@ export default function Table({id,submit,answeredQuestion,readyToSubmit}) {
       <div className="bg-gray w-full p-0 m-0">
         <img src="table/main.png"></img>
       </div>
-      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="table" next="" config="remember different object placements for different tasks"/>
+      <FeedbackForm id={id} submit={submit} answeredQuestion={answeredQuestion} readyToSubmit={readyToSubmit} solution="table" next="thanks" config="remember different object placements for different tasks"/>
     </div>
     </div>
   )

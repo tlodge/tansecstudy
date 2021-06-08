@@ -2,8 +2,8 @@
 import firebase from '../../lib/firebase';
 
 export default async (req, res) => {
-  
-  const docRef = firebase.collection('users').doc('consent');
+  const {id} = req.body;
+  const docRef = firebase.collection('consent').doc(`${id}`);
   console.log(req.body);
 
   await docRef.set({...req.body, ts:Date.now()});

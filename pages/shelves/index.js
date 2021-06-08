@@ -21,9 +21,3 @@ export default function Shelves({id, submit, answeredQuestion, readyToSubmit}) {
     </div>
   )
 }
-
-export async function getServerSideProps(context) {
-  return {
-    props: {id: Math.round(Math.random()  * 50000)}
-  }
-}

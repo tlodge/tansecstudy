@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
+export default function Start() {
 
   return (
       <div className="flex flex-grow flex-col  justify-center bg-lightgray p-2">
@@ -33,10 +33,4 @@ export default function Start({id, submit, answeredQuestion, readyToSubmit}) {
       </div>
     </div>
   )
-}
-
-export async function getServerSideProps(context) {
-  return {
-    props: {id: Math.round(Math.random()  * 50000)}
-  }
 }
