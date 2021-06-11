@@ -16,7 +16,14 @@ export default function Penpot({id, submit, answeredQuestion, readyToSubmit}) {
         <title>Pen pot</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC penpot</div>
+      <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl flex flex-row">
+        <div className="flex flex-grow">
+          TANSEC penpot
+        </div>
+        <div className="pl-6 pr-6 text-vlightgray">
+          7 of 9
+        </div>
+      </div>
       <div className="bg-gray w-full p-0 m-0">
         <img src="penpot/main.png"></img>
       </div>

@@ -14,7 +14,14 @@ export default function Table({id,submit,answeredQuestion,readyToSubmit}) {
         <title>Table</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC table</div>
+      <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl flex flex-row">
+        <div className="flex flex-grow">
+          TANSEC table
+        </div>
+        <div className="pl-6 pr-6 text-vlightgray">
+          9 of 9 - last one - thanks!
+        </div>
+      </div>
       <div className="bg-gray w-full p-0 m-0">
         <img src="table/main.png"></img>
       </div>

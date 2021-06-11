@@ -13,6 +13,9 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   const [use, setUse] = useState();
   const [usefollowup, setUseFollowup] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [waiting, setWaiting] = useState(false);
+
+  const linktext = waiting ? "..." : "SUBMIT AND GO TO NEXT";
 
   const answerUnderstand = (value)=>{
     setUnderstand(value);
@@ -79,7 +82,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   const renderSecureFollowup = ()=>{
     return <div>
               <div className="text-white text-sm mt-6 mb-1">
-                  In what way(s) could you imagine security being compromised?
+                  In what way(s) could you imagine security being compromised? (optional)
               </div>
               <textarea onChange={(e)=>answerSecurityFollowup(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
           </div>
@@ -131,7 +134,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   const renderMemory = ()=>{
     return <><hr className="text-lightgray m-4"/>
              <div className="col-span-10 p-4">
-                 <div className="text-white">How easy do you think it would be to remember different configurations?</div>
+                 <div className="text-white">Assuming you used this approach for a few different tasks, how easy do you think it would be to remember different configurations?</div>
                  <div className="text-white opacity-50 text-xs">{`i.e. ${config}`}</div>
               </div>
               <div className="color white w-full pl-6 pr-6 pb-6">
@@ -195,7 +198,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
                             <div className="text-xs text-orange font-bold">I love it</div> 
                         </div>
                     </div>
-                        <div className="text-white mb-4 text-sm">Why did you provide this rating?</div>
+                        <div className="text-white mb-4 text-sm">Why did you provide this rating? (optional)</div>
                         <textarea onChange={(e)=>answerRatingFollowup(e.target.value)}  className="resize border rounded-md w-full p-2"></textarea>
                     </div>
 
@@ -213,7 +216,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
         <span onClick={()=>answerUse("yes")} style={{"color" : use == "yes" ? "red" : "white"}}>YES</span> / <span onClick={()=>answerUse("no")}  style={{"color" : use == "no" ? "red" : "white"}}>NO</span>
     </div>
     <div className="col-span-12 pl-4 mb-1 text-white">
-        Why did you give this answer?
+        Why did you give this answer? (optional)
     </div>
     <div className="col-span-12 pl-4 text-black text-bold">
         <textarea  onChange={(e)=>answerUseFollowup(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
@@ -224,7 +227,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
   const renderFeedback = ()=>{
       return <><hr className="text-lightgray m-4"/><div className="p-4">
           <div className="text-white mb-2">
-              Please provide any thoughts or feedback on this solution
+              Please provide any thoughts or feedback on this solution (optional)
           </div>
           <div className="">
               <textarea  onChange={(e)=>answerFeedback(e.target.value)} className="resize border rounded-md w-full p-2"></textarea>
@@ -246,7 +249,7 @@ export default function FeedbackForm({id, submit, answeredQuestion, readyToSubmi
         
         {readyToSubmit(solution) && <div className="w-full flex justify-center p-2">
             <Link href={`/${next}?id=${id}`}>
-              <a onClick={()=>submit(solution)} className="text-white font-bold text-center">SUBMIT AND GO TO NEXT</a>
+              <a onClick={()=>{setWaiting(true);submit(solution)}} className="text-white font-bold text-center">{linktext}</a>
             </Link>
           </div>}
           </div>

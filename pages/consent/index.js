@@ -10,6 +10,10 @@ export default function Consent({id}) {
     const router = useRouter()
     const [consent,   setConsent] = useState({});
     const [complete, setComplete] = useState({});
+    const [waiting, setWaiting]=useState(false);
+    
+    const linktext = waiting ? "..." : "GET STARTED";
+
     const checkAll = ()=>{
         setConsent(
             {
@@ -35,6 +39,7 @@ export default function Consent({id}) {
 
     const getStarted = async ()=>{
         if (complete){
+            setWaiting(true);
             const consented = questions.reduce((acc, item)=>{
                 if (item != "all" && consent[item] && consent[item]["yes"])
                     return [...acc, item]
@@ -324,7 +329,7 @@ return (
         </div>
         <div className="text-2xl p-10 text-white text-center">
        
-       <div onClick={getStarted} className="text-orange font-bold text-center" style={{cursor: "pointer", opacity: complete? 1: 0.3}}>GET STARTED</div>
+       <div onClick={getStarted} className="text-orange font-bold text-center" style={{cursor: "pointer", opacity: complete? 1: 0.3}}>{linktext}</div>
 
 </div>
         </div>

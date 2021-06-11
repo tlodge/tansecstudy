@@ -14,6 +14,10 @@ export default function About({id}) {
   const [experience, setExperience] = useState(); 
   const [household, setHousehold]   = useState(); 
   const [complete, setComplete] = useState(false);
+  const [waiting, setWaiting] = useState(false);
+
+  const linkText = waiting ? "..." : "NEXT"
+
   const answerExperience  = (value)=>{
     setExperience(value);
   }
@@ -23,6 +27,7 @@ export default function About({id}) {
   }
 
   const next = async ()=>{
+    setWaiting(true);
     await request.post('/api/about').set('Content-Type', 'application/json').send({id:Number(id),household, experience});
     router.push(`/shelves?id=${id}`);
   }
@@ -103,7 +108,7 @@ export default function About({id}) {
                         <div className="text-xs pr-6 text-white">You live with non-family members (e.g.: friends, students, lodgers).</div> 
                 </div>
             </div>
-            <div onClick={next} className="text-orange font-bold text-center" style={{opacity: complete? 1: 0.3}}>NEXT</div>
+            <div onClick={next} className="text-orange font-bold text-center" style={{cursor: "pointer", opacity: complete? 1: 0.3}}>{linkText}</div>
             </div>
         </div> 
        

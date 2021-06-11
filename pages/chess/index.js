@@ -16,7 +16,14 @@ export default function Chess({id, submit, answeredQuestion, readyToSubmit}) {
         <title>Chessboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC chessboard</div>
+      <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl flex flex-row">
+        <div className="flex flex-grow">
+          TANSEC chessboard
+        </div>
+        <div className="pl-6 pr-6 text-vlightgray">
+          8 of 9 (nearly done!)
+        </div>
+      </div>
       <div className="bg-gray w-full p-0 m-0">
         <img src="chess/main.png"></img>
       </div>

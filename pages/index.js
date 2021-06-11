@@ -1,6 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {useState} from 'react'
+
 export default function Start() {
+
+  const [waiting, setWaiting] = useState(false);
+  const linktext = waiting ? "...": "GET STARTED";
 
   return (
       <div className="flex flex-grow flex-col  justify-center bg-lightgray p-2">
@@ -26,8 +31,9 @@ export default function Start() {
          If you are willing to take part, the study shouldn't take more than 15 minutes of your time. To get going, we'll first need to get your consent to take part in the study, which we'll do next.
       </div>
       <div className="text-2xl p-10 text-white text-center">
+      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"></svg>
           <Link href={`/consent`}>
-              <a className="text-orange font-bold text-center" style={{cursor: "pointer"}}>GET STARTED</a>
+              <a onClick={()=>setWaiting(true)} className="text-orange font-bold text-center" style={{cursor: "pointer"}}>{linktext}</a>
           </Link>
       </div>
       </div>

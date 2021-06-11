@@ -17,7 +17,14 @@ export default function NoticeBoard({id, submit, answeredQuestion, readyToSubmit
         <title>Noticeboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl">TANSEC noticeboard</div>
+      <div className="bg-darkgray-200 pt-6 pl-4 pb-4 text-white text-2xl flex flex-row">
+        <div className="flex flex-grow">
+          TANSEC noticeboard
+        </div>
+        <div className="pl-6 pr-6 text-vlightgray">
+          5 of 9
+        </div>
+      </div>
       <div className="bg-gray w-full p-0 m-0">
         <img src="noticeboard/main.png"></img>
       </div>
